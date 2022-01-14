@@ -1,0 +1,108 @@
+---
+slug: web3-dapp-handson
+title: Web3 dapp handson
+authors:
+  name: Hyoungsung Kim
+  title: Researcher@KETI
+  url: https://github.com/hyoungsungkim
+  image_url: https://github.com/hyoungsungkim.png
+tags: [web3, dapp, Ethereum]
+---
+
+import {Form, ConnectAccountButton, SendEthButton, ERC20Handler, ERC721Handler} from "./components/baseComponents.tsx"
+
+# Dapp with Metamask hands-on
+
+In this post, I will present how to build dapp using metamask.
+
+The purpose of this post are as follows:
+- Show how to connect Metamask on web service
+- Show how to make a transaction using Metamask on web service
+- Show how to deploy smart contract using Metamask on web service
+- Show how to mint token using Metamask on web service
+
+This post is based on this [resource](https://docs.metamask.io/guide/create-dapp.html) of Metamask docs.
+
+<!--truncate-->
+
+## Connect Metamask on Web service
+- In this subchapter we show how to connect Metamask.
+- Metamask works as provider of web3.
+
+<ConnectAccountButton display="Connect Metamask" className="button button--primary" />
+
+## Send ETH to account
+0.0001 ETH = 5AF3107A4000 WEI
+
+<SendEthButton display="Send Ethereum" className="button button--primary" />
+
+## Smart contract 
+
+- ERC-20
+- ERC-721
+- ERC-1155
+
+### ERC-20
+- Deploy smart contract to mint ERC20 token
+- Send ERC20 token to other account
+
+#### Contract
+```solidity title="erc20.sol"
+//SPDX-License-Identifier: Unlicense
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract Minting is ERC20 {
+    constructor(
+        uint256 totalSupply_,
+        string memory name_,
+        string memory symbol_) ERC20(name_, symbol_) {
+        _mint(msg.sender, totalSupply_);
+    }
+}
+```
+
+<ERC20Handler className="button button--primary" />
+
+### ERC-721
+- Deploy smart contract
+- Mint ERC721 token using metadata
+
+#### Contract
+```solidity title="erc721.sol"
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+
+contract MyNFT is ERC721URIStorage {
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenIds;
+
+    constructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) {}
+
+    function mintNFT(address _to, string memory _tokenURI) public returns (uint256) {
+        _tokenIds.increment();
+
+        uint256 newNFTId = _tokenIds.current();
+        _mint(_to, newNFTId);
+        _setTokenURI(newNFTId, _tokenURI);
+
+        emit Transfer(msg.sender, _to, newNFTId);
+
+        return newNFTId;
+    }
+    
+    function tokenURI(uint256 tokenId) public view override (ERC721URIStorage) returns (string memory) {
+        return super.tokenURI(tokenId);
+    }
+
+    function _burn(uint256 tokenId) internal override (ERC721URIStorage) {
+        super._burn(tokenId);
+    }
+}
+```
+<ERC721Handler className="button button--primary" />
+
