@@ -1,6 +1,7 @@
 import * as utils from './utils';
-import ethers from "ethers";
-import zksync from "zksync";
+import {ethers} from "ethers";
+import * as zksync from "zksync";
+
 
 // Prover(Alice) want to send token(or ETH)
 export class Prover {
@@ -41,7 +42,7 @@ export class Prover {
             await utils.registerAccount(this.zkSyncWallet, pubkey);
 
         } catch(error) {
-            console.error(error.message);
+            console.error((<Error>error).message);
         }
     }
 
@@ -51,7 +52,7 @@ export class Prover {
             await utils.displayZkSyncBalance(this.zkSyncWallet);
         } catch(error) {
             console.log(error)
-            console.error(error.message);
+            console.error((<Error>error).message);
         }        
     }
 
@@ -61,7 +62,7 @@ export class Prover {
             await utils.transfer(this.zkSyncWallet, toAddress, amountToTransfer, transferFee, this.token)
         } catch(error) {
             console.log(error)
-            console.error(error.message);
+            console.error((<Error>error).message);
         }
     }
     
@@ -71,7 +72,7 @@ export class Prover {
             await utils.withdrawToEthereum(this.zkSyncWallet, amountToWithdraw, withdrawFee, this.token)
         } catch(error) {
             console.log(error)
-            console.error(error.message);
+            console.error((<Error>error).message);
         }
     }
 }

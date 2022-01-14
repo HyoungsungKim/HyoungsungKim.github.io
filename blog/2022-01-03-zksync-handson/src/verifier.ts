@@ -30,7 +30,7 @@ export class Verifier {
             this.zkSyncProvider = await utils.getZkSyncProvider(this.networkName);
             this.zkSyncWallet = await utils.initAccount(this.ethersSigner, this.zkSyncProvider);
         } catch(error) {
-            console.error(error.message);
+            console.error((<Error>error).message);
         }
     }
 

@@ -9,25 +9,13 @@ declare global {
 
 export async function getZkSyncProvider(networkName): Promise<zksync.Provider> {
     let zkSyncProvider: zksync.Provider;
-    try {
-        zkSyncProvider = await zksync.getDefaultProvider(networkName);
-    } catch(error) {
-        console.log("Unable to connect to zksync.");
-        console.log(error);
-    }
-
+    zkSyncProvider = await zksync.getDefaultProvider(networkName);
     return zkSyncProvider;
 }
 
 export async function getEthereumProvider(): Promise<ethers.providers.Web3Provider> {
     let provider: ethers.providers.Web3Provider;
-    try {
-        provider = new ethers.providers.Web3Provider(window.ethereum);
-    } catch(error) {
-        console.log("Could not connect to Metamask")
-        console.log(error)
-    }
-
+    provider = new ethers.providers.Web3Provider(window.ethereum);
     return provider;
 }
 
