@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ethers from 'ethers';
+import {ethers} from 'ethers';
 import * as zksync from 'zksync';
 import {Prover} from "../src/prover";
 import { Verifier } from '../src/verifier';
@@ -10,6 +10,8 @@ declare global {
         ethereum: any;
     }
 }
+
+let connect: Connect;
 
 let proverETHProvider: ethers.providers.Web3Provider;
 let verifierETHProvider: ethers.providers.Web3Provider;
@@ -48,17 +50,18 @@ function Alert(props: SpanProps): JSX.Element {
     )
 }
 
-export function ConnectButton(props: ButtonProps): JSX.Element {
+function ConnectButton(props: ButtonProps): JSX.Element {
     const [showResults, setShowResults] = React.useState(false)
     const [spanDisplay, setSpanDisplay] = React.useState("Address : ")
 
     let {display, onClick, ...htmlButtonProps}: ButtonProps = props
     let spanProps: SpanProps = {display: spanDisplay};
     let alert: JSX.Element = Alert(spanProps);
-    let connect = new Connect(window.ethereum);
+ 
     
-    const clickHandler = async () => {        
+    const clickHandler = async () => {      
         if (display.toLowerCase().includes("prover")) {
+            connect = new Connect(window.ethereum);  
             proverETHProvider = connect.getProvider();
             await proverETHProvider.send("eth_requestAccounts", []);
             prover = new Prover("ropsten", proverETHProvider);
@@ -72,6 +75,7 @@ export function ConnectButton(props: ButtonProps): JSX.Element {
             console.log(spanProps.display)
 
         } else if (display.toLowerCase().includes("verifier")) {
+            connect = new Connect(window.ethereum);  
             verifierETHProvider = connect.getProvider();
             await verifierETHProvider.send("eth_requestAccounts", []);
             verifier = new Verifier("ropsten", verifierETHProvider)
@@ -96,7 +100,7 @@ export function ConnectButton(props: ButtonProps): JSX.Element {
     )
 }
 
-export function Deposit(props: ButtonProps): JSX.Element {
+function Deposit(props: ButtonProps): JSX.Element {
     let {display, onClick, ...htmlButtonProps} = props
 
     const clickHandler = async () => {
@@ -112,7 +116,7 @@ export function Deposit(props: ButtonProps): JSX.Element {
     )
 }
 
-export function Transfer(props: ButtonProps): JSX.Element {
+function Transfer(props: ButtonProps): JSX.Element {
     let {display, onClick, ...htmlButtonProps} = props
 
     const clickHandler = async () => {
@@ -130,7 +134,7 @@ export function Transfer(props: ButtonProps): JSX.Element {
     )
 }
 
-export function Withdraw(props: ButtonProps): JSX.Element {
+function Withdraw(props: ButtonProps): JSX.Element {
     let {display, onClick, ...htmlButtonProps} = props
 
     const clickHandler = async () => {
@@ -145,3 +149,5 @@ export function Withdraw(props: ButtonProps): JSX.Element {
         </div>
     )
 }
+
+export {ConnectButton, Deposit, Transfer, Withdraw}

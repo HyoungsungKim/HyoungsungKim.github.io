@@ -1,6 +1,6 @@
 import * as utils from "./utils";
-import ethers from "ethers";
-import zksync from "zksync";
+import {ethers} from "ethers";
+import * as zksync from "zksync";
 
 // Verifier(Bob) verify Prover(Alice)
 export class Verifier {

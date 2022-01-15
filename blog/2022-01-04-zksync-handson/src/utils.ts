@@ -13,12 +13,13 @@ export async function getZkSyncProvider(networkName): Promise<zksync.Provider> {
     return zkSyncProvider;
 }
 
+/*
 export async function getEthereumProvider(): Promise<ethers.providers.Web3Provider> {
     let provider: ethers.providers.Web3Provider;
     provider = new ethers.providers.Web3Provider(window.ethereum);
     return provider;
 }
-
+*/
 export async function initAccount(signer: ethers.Signer, zkSyncProvider: zksync.Provider): Promise<zksync.Wallet> {
     /*
     let provider: ethers.providers.Web3Provider;
