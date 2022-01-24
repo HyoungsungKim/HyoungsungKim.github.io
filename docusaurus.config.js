@@ -15,6 +15,7 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'HyoungsungKim', // Usually your GitHub org/user name.
   projectName: 'HyoungsungKim.github.io', // Usually your repo name.
+  deploymentBranch: 'master',
 
   presets: [
     [
