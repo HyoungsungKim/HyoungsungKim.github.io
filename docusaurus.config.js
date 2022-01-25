@@ -8,14 +8,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
-  url: 'https://hyoungsungkim.github.io',
+  url: 'https://hyoungsungkim.github.io/',
   baseUrl: '/HyoungsungKim.github.io/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'HyoungsungKim', // Usually your GitHub org/user name.
   projectName: 'HyoungsungKim.github.io', // Usually your repo name.
-  deploymentBranch: 'master',
+  trailingSlash: true,
 
   presets: [
     [
