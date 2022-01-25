@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
-  #  paths: [./**]
+  #  paths: [blog/**]
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
           node-version: 14.x
           cache: npm
       - name: Build website
-        working-directory: blog
+        #working-directory: blog
         run: |
           npm ci
           npm run build
