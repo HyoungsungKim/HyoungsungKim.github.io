@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://hyoungsungkim.github.io/HyoungsungKim.github.io/blog</id>
+    <id>https://hyoungsungkim.github.io/blog</id>
     <title>My Site Blog</title>
     <updated>2022-01-03T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://hyoungsungkim.github.io/HyoungsungKim.github.io/blog"/>
+    <link rel="alternate" href="https://hyoungsungkim.github.io/blog"/>
     <subtitle>My Site Blog</subtitle>
-    <icon>https://hyoungsungkim.github.io/HyoungsungKim.github.io/img/favicon.ico</icon>
+    <icon>https://hyoungsungkim.github.io/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Web3 dapp handson]]></title>
         <id>web3-dapp-handson</id>
-        <link href="https://hyoungsungkim.github.io/HyoungsungKim.github.io/blog/web3-dapp-handson"/>
+        <link href="https://hyoungsungkim.github.io/blog/web3-dapp-handson"/>
         <updated>2022-01-03T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[In this post, I will present how to build dapp using metamask.]]></summary>
         <content type="html"><![CDATA[<p>In this post, I will present how to build dapp using metamask.</p><p>The purpose of this post are as follows:</p><ul><li>Show how to connect Metamask on web service</li><li>Show how to make a transaction using Metamask on web service</li><li>Show how to deploy smart contract using Metamask on web service</li><li>Show how to mint token using Metamask on web service</li></ul><p>This post is based on this <a href="https://docs.metamask.io/guide/create-dapp.html">resource</a> of Metamask docs.</p><h2>Connect Metamask on Web service</h2><ul><li>In this subchapter we show how to connect Metamask.</li><li>Metamask works as provider of web3.</li></ul><div display="Connect Metamask" class="button button--primary"></div><h2>Send ETH to account</h2><p>0.0001 ETH = 5AF3107A4000 WEI</p><div display="Send Ethereum" class="button button--primary"></div><h2>Smart contract</h2><ul><li>ERC-20</li><li>ERC-721</li><li>ERC-1155</li></ul><h3>ERC-20</h3><ul><li>Deploy smart contract to mint ERC20 token</li><li>Send ERC20 token to other account</li></ul><h4>Contract</h4><pre><code class="language-solidity" metastring="title=&quot;erc20.sol&quot;" title="&quot;erc20.sol&quot;">//SPDX-License-Identifier: Unlicense
@@ -67,7 +67,7 @@ contract MyNFT is ERC721URIStorage {
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>welcome</id>
-        <link href="https://hyoungsungkim.github.io/HyoungsungKim.github.io/blog/welcome"/>
+        <link href="https://hyoungsungkim.github.io/blog/welcome"/>
         <updated>2021-08-26T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></summary>
         <content type="html"><![CDATA[<p><a href="https://docusaurus.io/docs/blog">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog">blog plugin</a>.</p><p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p><p>Regular blog authors can be added to <code>authors.yml</code>.</p><p>The blog post date can be extracted from filenames, such as:</p><ul><li><code>2019-05-30-welcome.md</code></li><li><code>2019-05-30-welcome/index.md</code></li></ul><p>A blog post folder can be convenient to co-locate blog post images:</p><p><img src="./docusaurus-plushie-banner.jpeg" alt="Docusaurus Plushie"/></p><p>The blog supports tags as well!</p><p><strong>And if you don&#x27;t want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content>
@@ -83,7 +83,7 @@ contract MyNFT is ERC721URIStorage {
     <entry>
         <title type="html"><![CDATA[MDX Blog Post]]></title>
         <id>mdx-blog-post</id>
-        <link href="https://hyoungsungkim.github.io/HyoungsungKim.github.io/blog/mdx-blog-post"/>
+        <link href="https://hyoungsungkim.github.io/blog/mdx-blog-post"/>
         <updated>2021-08-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></summary>
         <content type="html"><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/">MDX</a>.</p><p>:::tip</p><p>Use the power of React to create interactive blog posts.</p><pre><code class="language-js">&lt;button onClick={() =&gt; alert(&#x27;button clicked!&#x27;)}&gt;Click me!&lt;/button&gt;
@@ -96,7 +96,7 @@ contract MyNFT is ERC721URIStorage {
     <entry>
         <title type="html"><![CDATA[Greetings!]]></title>
         <id>greetings</id>
-        <link href="https://hyoungsungkim.github.io/HyoungsungKim.github.io/blog/greetings"/>
+        <link href="https://hyoungsungkim.github.io/blog/greetings"/>
         <updated>2021-02-28T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Congratulations, you have made your first post!]]></summary>
         <content type="html"><![CDATA[<p>Congratulations, you have made your first post!</p><p>Feel free to play around and edit this post as much you like.</p>]]></content>
@@ -112,7 +112,7 @@ contract MyNFT is ERC721URIStorage {
     <entry>
         <title type="html"><![CDATA[Long Blog Post]]></title>
         <id>long-blog-post</id>
-        <link href="https://hyoungsungkim.github.io/HyoungsungKim.github.io/blog/long-blog-post"/>
+        <link href="https://hyoungsungkim.github.io/blog/long-blog-post"/>
         <updated>2019-05-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[This is the summary of a very long blog post,]]></summary>
         <content type="html"><![CDATA[<p>This is the summary of a very long blog post,</p><p>Use a <code>&lt;!--</code> <code>truncate</code> <code>--&gt;</code> comment to limit blog post size in the list view.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content>
@@ -124,7 +124,7 @@ contract MyNFT is ERC721URIStorage {
     <entry>
         <title type="html"><![CDATA[First Blog Post]]></title>
         <id>first-blog-post</id>
-        <link href="https://hyoungsungkim.github.io/HyoungsungKim.github.io/blog/first-blog-post"/>
+        <link href="https://hyoungsungkim.github.io/blog/first-blog-post"/>
         <updated>2019-05-28T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet]]></summary>
         <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content>
