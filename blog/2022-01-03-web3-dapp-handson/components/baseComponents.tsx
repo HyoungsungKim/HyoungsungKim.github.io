@@ -245,7 +245,7 @@ function ERC721Handler(props: ButtonProps): JSX.Element {
             statusMonitor.innerHTML = `Deploy failed, ${(err as Error).message}`;
         }
     }
-    
+
     async function mintERC721() {
         try {
             const URI = URIInput.value;
@@ -281,14 +281,14 @@ function ERC721Handler(props: ButtonProps): JSX.Element {
             <div>
                 <button {...htmlButtonProps} onClick={deployButtonHandler}>Deploy(Minting token)</button>
                 <div>
-                    {Form("URI", "URI")}
                     {Form("Name", "NFTname")}
                     {Form("Symbol", "NFTsymbol")}
                 </div><br />
 
-                <button {...htmlButtonProps} id="NFTsendTokenButton" onClick={mintERC721}>Send token</button>
+                <button {...htmlButtonProps} id="NFTsendTokenButton" onClick={mintERC721}>Mint token</button>
                 <div>
-                    {Form("To", "NFTtoAddress")}
+                    {Form("URI", "URI")}
+                    {Form("Mint To", "NFTtoAddress")}
                 </div>
             </div>
         </div>
