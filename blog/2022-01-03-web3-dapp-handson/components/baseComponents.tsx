@@ -206,6 +206,7 @@ function ERC721Handler(props: ButtonProps): JSX.Element {
     let statusMonitor: HTMLSpanElement;
     let sendTokenButton: HTMLButtonElement;
     
+    let URIInput: HTMLInputElement;
     let nameInput: HTMLInputElement;
     let symbolInput: HTMLInputElement;
 
@@ -221,6 +222,7 @@ function ERC721Handler(props: ButtonProps): JSX.Element {
         statusMonitor = document.getElementById("NFTstatus") as HTMLSpanElement;
         sendTokenButton =  document.getElementById("NFTsendTokenButton") as HTMLButtonElement;
 
+        URIInput = document.getElementById("URI") as HTMLInputElement;
         nameInput = document.getElementById("NFTname") as HTMLInputElement;
         symbolInput = document.getElementById("NFTsymbol") as HTMLInputElement;
 
@@ -243,10 +245,11 @@ function ERC721Handler(props: ButtonProps): JSX.Element {
             statusMonitor.innerHTML = `Deploy failed, ${(err as Error).message}`;
         }
     }
+    
     async function mintERC721() {
         try {
+            const URI = URIInput.value;
             const toAddress = toAddressInput.value;
-            const URI = "http://localhost:8888/ERC721/metadata.json";
             
             const mintingResult = await contract.mintNFT(toAddress, URI)
             mintingResult.wait();
@@ -278,6 +281,7 @@ function ERC721Handler(props: ButtonProps): JSX.Element {
             <div>
                 <button {...htmlButtonProps} onClick={deployButtonHandler}>Deploy(Minting token)</button>
                 <div>
+                    {Form("URI", "URI")}
                     {Form("Name", "NFTname")}
                     {Form("Symbol", "NFTsymbol")}
                 </div><br />
