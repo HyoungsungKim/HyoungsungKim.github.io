@@ -1,9 +1,13 @@
 import * as React from 'react';
+import useIsBrowser from '@docusaurus/useIsBrowser';
+
 import {ethers} from 'ethers';
-import * as zksync from 'zksync';
 import {Prover} from "../src/prover";
 import { Verifier } from '../src/verifier';
 import {Connect} from "../src/connect"
+
+//import * as zksync from 'zksync';
+
 
 declare global {
     interface Window {
@@ -53,47 +57,46 @@ function Alert(props: SpanProps): JSX.Element {
 export function ConnectButton(props: ButtonProps): JSX.Element {
     const [showResults, setShowResults] = React.useState(false)
     const [spanDisplay, setSpanDisplay] = React.useState("Address : ")
-
+  
     let {display, onClick, ...htmlButtonProps}: ButtonProps = props
     let spanProps: SpanProps = {display: spanDisplay};
     let alert: JSX.Element = Alert(spanProps);
- 
-    
+    let signer: ethers.Signer;
+
     const clickHandler = async () => {    
+        const zksync = require("zksync");
+
         connect = new Connect(window.ethereum);  
         proverETHProvider = connect.getProvider();
         await proverETHProvider.send("eth_requestAccounts", []);
-        const signer = proverETHProvider.getSigner();
-
-        prover = new Prover("ropsten", proverETHProvider, signer);
-            
-            /*
-        if (display.toLowerCase().includes("prover")) {
-                    
+        signer = proverETHProvider.getSigner();
+        //setIsClicked(true);
+        
+        if (display.toLowerCase().includes("prover")) {                    
             connect = new Connect(window.ethereum);  
             proverETHProvider = connect.getProvider();
             await proverETHProvider.send("eth_requestAccounts", []);
             const signer = proverETHProvider.getSigner();
 
-            prover = new Prover("ropsten", proverETHProvider, signer);
-
-            //await zksync.getDefaultProvider("ropsten");
-            /*await prover.init()
-
-            spanProps.display = "Address : " + await proverETHProvider.getSigner().getAddress();
+            prover = new Prover(zksync, "ropsten", proverETHProvider, signer);        
+            await prover.init()
+        
+            spanProps.display = "Address : " + await signer.getAddress();
             setSpanDisplay(spanProps.display);
 
             console.log(prover)
             console.log(spanProps.display)
             
-        } else if (display.toLowerCase().includes("verifier")) {
+        }  else if (display.toLowerCase().includes("verifier")) {
             connect = new Connect(window.ethereum);  
             verifierETHProvider = connect.getProvider();
             await verifierETHProvider.send("eth_requestAccounts", []);
-            verifier = new Verifier("ropsten", verifierETHProvider)
+            const signer = verifierETHProvider.getSigner();
+
+            verifier = new Verifier(zksync, "ropsten", verifierETHProvider, signer)
             verifier.init()
 
-            spanProps.display = "Address : " + await verifierETHProvider.getSigner().getAddress();
+            spanProps.display = "Address : " + await signer.getAddress();
             setSpanDisplay(spanProps.display);
 
             console.log(verifier)
@@ -102,7 +105,7 @@ export function ConnectButton(props: ButtonProps): JSX.Element {
         
         alert = Alert(spanProps);
         setShowResults(true)        
-        */
+        
     }
 
     return (
@@ -113,7 +116,6 @@ export function ConnectButton(props: ButtonProps): JSX.Element {
     )
 }
 
-/*
 export function Deposit(props: ButtonProps): JSX.Element {
     let {display, onClick, ...htmlButtonProps} = props
 
@@ -163,4 +165,3 @@ export function Withdraw(props: ButtonProps): JSX.Element {
         </div>
     )
 }
-*/
