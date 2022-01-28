@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import * as zksync from "zksync";
+import * as zksyncType from "zksync";
 
 declare global {
     interface Window {
@@ -7,9 +7,9 @@ declare global {
     }
 }
 
-export async function getZkSyncProvider(networkName): Promise<zksync.Provider> {
-    //let zkSyncProvider: zksync.Provider;
-    //zkSyncProvider = await zksync.getDefaultProvider(networkName);
+export async function getZkSyncProvider(zksync, networkName): Promise<zksyncType.Provider> {
+    //let zkSyncProvider: zksyncType.Provider;
+    //zkSyncProvider = await zksyncType.getDefaultProvider(networkName);
     return zksync.getDefaultProvider(networkName);
 }
 
@@ -20,28 +20,28 @@ export async function getEthereumProvider(): Promise<ethers.providers.Web3Provid
     return provider;
 }
 */
-export async function initAccount(signer: ethers.Signer, zkSyncProvider: zksync.Provider): Promise<zksync.Wallet> {
+export async function initAccount(zksync, signer: ethers.Signer, zkSyncProvider: zksyncType.Provider): Promise<zksyncType.Wallet> {
     /*
     let provider: ethers.providers.Web3Provider;
     const signer: ethers.Signer = provider.getSigner()
-    const zkSyncWallet = await zksync.Wallet.fromEthSigner(signer, zkSyncProvider)
+    const zkSyncWallet = await zksyncType.Wallet.fromEthSigner(signer, zkSyncProvider)
     */
 
-    const zkSyncWallet = await zksync.Wallet.fromEthSigner(signer, zkSyncProvider);
-    return zkSyncWallet;
+    return zksync.Wallet.fromEthSigner(signer, zkSyncProvider);
 }
 
 export interface PubKey {
-    feeToken: zksync.types.TokenLike;
-    ethAuthType: zksync.types.ChangePubkeyTypes;
+    feeToken: zksyncType.types.TokenLike;
+    ethAuthType: zksyncType.types.ChangePubkeyTypes;
     fee?: ethers.BigNumberish;
-    nonce?: zksync.types.Nonce;
+    nonce?: zksyncType.types.Nonce;
     validFrom?: number;
     validUntil?: number;
 }
 
-export async function registerAccount(zkSyncWallet: zksync.Wallet, changePubKey: PubKey) {
-    console.log(`Registering the ${zkSyncWallet.address()} account on zkSync`);
+
+export async function registerAccount(zkSyncWallet: zksyncType.Wallet, changePubKey: PubKey) {
+    console.log(`Registering the ${zkSyncWallet.address()} account on zksyncType`);
     if (!await zkSyncWallet.isSigningKeySet()) {
         if (await zkSyncWallet.getAccountId() === undefined) {
             throw new Error(`Unknown account`)
@@ -52,7 +52,7 @@ export async function registerAccount(zkSyncWallet: zksync.Wallet, changePubKey:
     console.log(`Account ${zkSyncWallet.address()} registered`)
 }
 
-export async function depositToZkSync(zkSyncWallet: zksync.Wallet, token: zksync.types.TokenLike, amountToDeposit: string) {
+export async function depositToZkSync(zkSyncWallet: zksyncType.Wallet, token: zksyncType.types.TokenLike, amountToDeposit: string) {
     const deposit = await zkSyncWallet.depositToSyncFromEthereum({
         depositTo: zkSyncWallet.address(),
         token: token,
@@ -62,18 +62,19 @@ export async function depositToZkSync(zkSyncWallet: zksync.Wallet, token: zksync
     try{
         await deposit.awaitReceipt()
     } catch (error) {
-        console.log(`Error while awaiting confirmation from the zkSync operators.`)
+        console.log(`Error while awaiting confirmation from the zksyncType operators.`)
         console.log(error)
     }
 }
 
 export async function transfer(
-        from: zksync.Wallet,
+        zksync,
+        from: zksyncType.Wallet,
         toAddress: string,
         amountToTransfer: string,
         transferFee: string,
-        token: zksync.types.TokenLike
-    ): Promise<zksync.types.TransactionReceipt> {
+        token: zksyncType.types.TokenLike
+    ): Promise<zksyncType.types.TransactionReceipt> {
     const closestPackableAmount = zksync.utils.closestPackableTransactionAmount(ethers.utils.parseEther(amountToTransfer));
     const closestPackableFee = zksync.utils.closestPackableTransactionFee(ethers.utils.parseEther(transferFee));
 
@@ -91,16 +92,16 @@ export async function transfer(
 }
 
 export async function getFee(
-        transactionType: zksync.types.IncomingTxFeeType,
+        transactionType: zksyncType.types.IncomingTxFeeType,
         address: string,
-        token: zksync.types.TokenLike,
-        zkSyncProvider: zksync.Provider
+        token: zksyncType.types.TokenLike,
+        zkSyncProvider: zksyncType.Provider
     ): Promise<string> {
     const feeInWei = await zkSyncProvider.getTransactionFee(transactionType, address, token)
     return ethers.utils.formatEther(feeInWei.totalFee.toString())
 }
 
-export async function withdrawToEthereum(wallet: zksync.Wallet, amountToWithdraw: string, withdrawalFee: string, token: zksync.types.TokenLike) {
+export async function withdrawToEthereum(zksync, wallet: zksyncType.Wallet, amountToWithdraw: string, withdrawalFee: string, token: zksyncType.types.TokenLike) {
     const closestPackableAmount = zksync.utils.closestPackableTransactionAmount(ethers.utils.parseEther(amountToWithdraw))
     const closestPackableFee = zksync.utils.closestPackableTransactionFee(ethers.utils.parseEther(withdrawalFee))
     const withdraw = await wallet.withdrawFromSyncToEthereum({
@@ -114,7 +115,7 @@ export async function withdrawToEthereum(wallet: zksync.Wallet, amountToWithdraw
     console.log("ZKP verification is complete")
 }
 
-export async function displayZkSyncBalance(wallet: zksync.Wallet) {
+export async function displayZkSyncBalance(wallet: zksyncType.Wallet) {
     const state = await wallet.getAccountState()
 
     if (state.committed.balances.ETH) {
