@@ -3,7 +3,7 @@ import {ethers} from "ethers";
 import type * as zksyncType from "zksync";
 
 // Verifier(Bob) verify Prover(Alice)
-export class Verifier {
+export class Receiver {
     private zksync;
     private networkName: string;
     private ethersProvider: ethers.providers.Web3Provider;

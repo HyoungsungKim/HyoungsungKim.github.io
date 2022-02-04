@@ -4,7 +4,7 @@ import type * as zksyncType from "zksync";
 
 
 // Prover(Alice) want to send token(or ETH)
-export class Prover {
+export class Sender {
     private zksync: any
     private networkName: zksyncType.types.Network;
     private ethersProvider: ethers.providers.Web3Provider;
