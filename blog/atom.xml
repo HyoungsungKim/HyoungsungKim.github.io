@@ -20,9 +20,9 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Handing metamask on web]]></title>
-        <id>Handing-metamask-on-web</id>
-        <link href="https://hyoungsungkim.github.io/blog/Handing-metamask-on-web"/>
+        <title type="html"><![CDATA[Handling metamask on web]]></title>
+        <id>Handling-metamask-on-web</id>
+        <link href="https://hyoungsungkim.github.io/blog/Handling-metamask-on-web"/>
         <updated>2022-01-03T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[In this post, I present how to handle Metamask on the web with interactive examples using React components.]]></summary>
         <content type="html"><![CDATA[<p>In this post, I present how to handle Metamask on the web with interactive examples using React components.
