@@ -50,7 +50,6 @@ function Form(labelSrc: string, elementId: string|undefined = undefined, value: 
 
 function ConnectAccountButton(props: ButtonProps): JSX.Element {
     let {display, onClick, ...htmlButtonProps}: ButtonProps = props;
-
     
     let userAccountComponent: HTMLSpanElement;
     let userAccount: string;
@@ -60,7 +59,7 @@ function ConnectAccountButton(props: ButtonProps): JSX.Element {
         provider = connect.getProvider();
 
         await provider.send("eth_requestAccounts", []);
-        const signer = provider.getSigner();
+        const signer = connect.getSigner();
         userAccount = await signer.getAddress();
         userAccountComponent = document.getElementById("userAccount") as HTMLSpanElement;
         userAccountComponent.textContent = `User account: ${userAccount}`;
