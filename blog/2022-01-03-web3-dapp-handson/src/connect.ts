@@ -1,4 +1,4 @@
-import { ethers }from 'ethers';
+import { ethers } from 'ethers';
 
 export class Connect {
     private provider: ethers.providers.Web3Provider;
@@ -11,5 +11,9 @@ export class Connect {
 
     getProvider(): ethers.providers.Web3Provider { 
         return this.provider;
+    }
+
+    getSigner(): ethers.providers.JsonRpcSigner {
+        return this.signer
     }
 }
